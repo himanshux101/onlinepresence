@@ -11,17 +11,18 @@ There is no tool that gives you the digital footprint of a user under a single A
 
 see test.py for examples 
 
-`*from* twitter.profile *import* Profile
+```
+*from* twitter.profile *import* Profile
 
 
 
 show = Profile()
 
-returns dict 
+# returns dict 
 
-===========
 
-info = show.parse_username('himanshux101')`
+info = show.parse_username('himanshux101')
+```
 
 ## ToDo
 
