@@ -2,6 +2,14 @@ import requests
 from bs4 import BeautifulSoup
 
 class Profile:
+    """
+    Parse Instagram profile
+
+    returns:
+        followers_count
+        following_count
+        posts_count
+    """
     def __init__(self):
         pass 
 
@@ -17,9 +25,9 @@ class Profile:
         soup = BeautifulSoup(res.content, 'html.parser')
         data = soup.find_all('meta', attrs={'property': 'og:description'})
         text = data[0].get('content').split()
-        self.followers = text[0]
-        self.following = text[2]
-        self.posts = text[4]
+        self.followers_count = text[0]
+        self.following_count = text[2]
+        self.posts_count = text[4]
 
     def parse_username(self, username):
         res = self._request_url(username)
