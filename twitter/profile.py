@@ -23,10 +23,16 @@ class Profile:
     def __init__(self):
         pass
 
-    def _parse(self, res):
-        if res is None:
-            return
+    def _request_url(self, username):
+        link = 'https://www.twitter.com/{}'.format(username)
+        res = requests.get(link)
 
+        if res.status_code != 200:
+            return None
+        else:
+            return res
+
+    def _parse(self, res):
         soup = BeautifulSoup(res.content, 'html.parser')
 
         # side bar section
@@ -71,14 +77,9 @@ class Profile:
         self.likes_count = likes_count[0].get_text()
 
     def parse_username(self, username):
-        link = 'https://www.twitter.com/{}'.format(username)
-        res = requests.get(link)
-
-        if res.status_code != 200:
-            print('wrong username')
-            res = None
-            return None
+        res = self._request_url(username)
+        if res is None:
+            return
 
         self._parse(res)
-
         return self.__dict__

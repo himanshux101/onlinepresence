@@ -1,16 +1,17 @@
-# online presence 
+# Online Presence 
 
 There is no tool that gives you the digital footprint of a user under a single API. The social media company doesn't even provide all the info under their API's. This tool does it's best to solve this problem by giving you the online presence of a user. 
 
 ## Requirements 
 
--  requests 
+- requests 
 - Beautifulsoup4
 
 ## Usage 
 
 see test.py for examples 
 
+#### Twitter
 ```
 from twitter.profile import Profile
 
@@ -19,9 +20,17 @@ show = Profile()
 info = show.parse_username('himanshux101')
 ```
 
+#### Instagram
+```
+from instagram.profile import Profile
+
+show = Profile()
+info = show.parse_username('himanshux1')
+print(info)
+```
+
 ## ToDo
 
-- add instagram profile crawler 
 - add google page search crawler 
 
 ## Contribute to Online Presence 
